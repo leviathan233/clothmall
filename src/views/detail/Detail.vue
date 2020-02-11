@@ -13,8 +13,8 @@
       <DetailRecommend ref="detailRecommend" :goods="recommend.data.list" v-if="Object.keys(recommend).length!=0" />
     </Scroll>
     <BackTop @click.native="backTop()" v-show="showBackTop"/>
-    <DetailTabBar @addToCart="addToCart" @buyNow="buyNow"/>
-    <SkuInfo :sku-info="skuInfo" v-show="showSkuChoose" @close="closeSkuChoose"></SkuInfo>
+    <DetailTabBar @addToCart="addToCart" @buyNow="buyNow" v-show="showDetailTabBar"/>
+    <SkuInfo :sku-info="skuInfo" :iid="iid" v-show="showSkuChoose" @close="closeSkuChoose"></SkuInfo>
   </div>
 </template>
 
@@ -72,7 +72,8 @@
         navIndex:0,
         currentIndex:0,
         skuInfo:{},
-        showSkuChoose:false
+        showSkuChoose:false,
+        showDetailTabBar:true
       }
     },
     created() {
@@ -130,13 +131,15 @@
         }
       },
       addToCart(){
-        this.$store.dispatch('addToCart',this.iid)
+
       },
       buyNow(){
         this.showSkuChoose = true
+        this.showDetailTabBar = false
       },
       closeSkuChoose(){
         this.showSkuChoose = false
+        this.showDetailTabBar = true
       },
       /**
        *  网络请求
@@ -179,6 +182,6 @@
     right: 0;
   }
   /*DetailTabBar{*/
-  /*  z-index: 1;*/
+  /*  z-index: 3;*/
   /*}*/
 </style>

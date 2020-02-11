@@ -15,7 +15,8 @@ const store = new Vuex.Store({
   },
   actions:{
     addToCart(state,payload){
-      getDetail(payload).then(res => {
+      getDetail(payload.iid).then(res => {
+        Vue.set(res,'sku',payload)
         state.commit('addToCart',res)
       })
     }

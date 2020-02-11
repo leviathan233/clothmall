@@ -15,8 +15,7 @@
       </div>
     </div>
     <div class="right">
-      <div class="shopcart" @click="addToCart">加入购物车</div>
-      <div class="buy" @click="buyNow">立即购买</div>
+      <div class="buy" @click="buyNow">选择参数</div>
     </div>
   </div>
 </template>
@@ -44,7 +43,7 @@
     right: 0;
     left: 0;
     background-color: white;
-    z-index: 1;
+    z-index: 3;
     text-align: center;
   }
   .icon{
@@ -58,16 +57,14 @@
     flex: 1;
     display: flex;
   }
-  .service,.shop,.collect,.shopcart,.buy{
+  .service,.shop,.collect,.buy{
     flex: 1;
   }
-  .shopcart,.buy{
+  .buy{
     line-height: 60px;
-  }
-  .shopcart{
-    background-color: yellow;
   }
   .buy{
     background-color: #ff8198;
+    color: white;
   }
 </style>

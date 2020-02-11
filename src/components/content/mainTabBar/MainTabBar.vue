@@ -10,7 +10,7 @@
       <template v-slot:tab-bar-item-img-active><img src="~assets/img/tabbar/category_active.svg" alt=""></template>
       <template v-slot:tab-bar-item-name>分类</template>
     </TabBarItem>
-    <TabBarItem link="/shoppingcart">
+    <TabBarItem link="/shopcart">
       <template v-slot:tab-bar-item-img><img src="~assets/img/tabbar/shopcart.svg" alt=""></template>
       <template v-slot:tab-bar-item-img-active><img src="~assets/img/tabbar/shopcart_active.svg" alt=""></template>
       <template v-slot:tab-bar-item-name>购物车</template>

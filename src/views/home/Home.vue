@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <NavBar class="home-nav"><template v-slot:center>购物街</template><template v-slot:right></template></NavBar>
+    <NavBar class="home-nav"><template v-slot:center>首页</template><template v-slot:right></template></NavBar>
     <TabControl ref="tabControl2" :titles="['流行','新款','精选']" @tabClick="tabClick" class="fixed" v-show="isFixed"></TabControl>
     <Scroll ref="scroll" class="content"
             @scroll="contentScroll"

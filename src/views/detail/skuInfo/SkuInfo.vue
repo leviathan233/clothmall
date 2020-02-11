@@ -17,11 +17,16 @@
           <div class="button" v-for="item in prop.list" :class="[{active:item.sizeId === sizeId},{active:item.styleId === styleId}]" @click="chooseSku({sizeId:item.sizeId,styleId:item.styleId})">{{item.name}}</div>
         </div>
       </div>
+      <div class="bottomButton">
+        <div class="addToCart" @click="addToCart">加入购物车</div>
+        <div class="buy" @click="buy">立即购买</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import Vue from "vue"
   export default {
     name: "SkuInfo",
     filters:{
@@ -30,6 +35,12 @@
       }
     },
     props:{
+      iid:{
+        type:String,
+        default() {
+          return '';
+        }
+      },
       skuInfo:{
         type:Object,
         default(){
@@ -74,6 +85,14 @@
       },
       close(){
         this.$emit('close')
+      },
+      addToCart(){
+        const item = this.skuItem
+        Vue.set(item,'iid',this.iid)
+        this.$store.dispatch('addToCart',item)
+      },
+      buy(){
+
       }
     }
   }
@@ -85,15 +104,17 @@
     height: 100%;
     width: 100%;
     background-color: rgba(96,96,96,50%) ;
-    bottom: 60px;
+    bottom: 0px;
+    z-index: 1;
   }
   .skuInfo{
     position: fixed;
     background-color: white;
     height: 50%;
     width: 100%;
-    bottom: 60px;
+    bottom: 0px;
     padding: 20px;
+    z-index: 1;
   }
   .skuImg{
     width: 90px;
@@ -136,5 +157,19 @@
     right: 5px;
     border: 1px solid darkgrey;
     border-radius: 50%;
+  }
+  .buy,.addToCart{
+    padding: 5px;
+    border: 1px solid #ff5777;
+    background-color: #ff8198;
+    margin: 5px;
+    display: inline-block;
+    color: white;
+    border-radius: 5px;
+  }
+  .bottomButton{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
   }
 </style>
