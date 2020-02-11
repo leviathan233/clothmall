@@ -15,15 +15,23 @@
       </div>
     </div>
     <div class="right">
-      <div class="shopcart">加入购物车</div>
-      <div class="buy">立即购买</div>
+      <div class="shopcart" @click="addToCart">加入购物车</div>
+      <div class="buy" @click="buyNow">立即购买</div>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "DetailTabBar"
+    name: "DetailTabBar",
+    methods:{
+      addToCart(){
+        this.$emit('addToCart')
+      },
+      buyNow(){
+        this.$emit('buyNow')
+      }
+    }
   }
 </script>
 

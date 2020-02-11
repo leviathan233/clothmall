@@ -1,10 +1,16 @@
 <template>
-  <div>Shopcart</div>
+  <div id="shopCart">
+    <NavBar><template v-slot:center>购物车</template></NavBar>
+  </div>
 </template>
 
 <script>
+  import NavBar from "components/common/navbar/NavBar";
   export default {
-    name: "Shopcart"
+    name: "Shopcart",
+    components:{
+      NavBar
+    },
   }
 </script>
 

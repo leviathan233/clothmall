@@ -88,11 +88,12 @@
       // console.log(this.$refs.tabControl.offestTop);
     },
     activated() {
-      this.$refs.scroll.scrollToTop(0,this.saveY,0)
+      this.$refs.scroll.scrollRefresh()
+      // this.$refs.scroll.scrollToTop(0,this.saveY,0)
     },
     deactivated(){
       //保存离开时的Y值
-      this.saveY = this.$refs.scroll.getY()
+      // this.saveY = this.$refs.scroll.getY()
       this.$bus.$off("imgLoad",this.refreshFunc)
     },
     methods:{
@@ -131,6 +132,10 @@
       //监听轮播图加载完成计算tabControl的高度
       debounceSwiperImgLoaded(){
         this.tabControlOffsetTop = this.$refs.tabControl1.$el.offsetTop
+      },
+      refresh(){
+        console.log('aaa');
+        this.$refs.scroll.scrollRefresh()
       },
       // refreshContent(){
       //   console.log('aaa');

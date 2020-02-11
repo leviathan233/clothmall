@@ -50,17 +50,16 @@
           this.scroll &&  this.scroll.scrollTo(x,y,time)
         },
         scrollRefresh(){
-          // console.log('aaa');
           this.scroll && this.scroll.refresh()
         },
         pullUpFinish(){
           this.scroll.finishPullUp()
         },
-        getY(){
-          this.scroll.on('scroll',position => {
-            return position.y
-          })
-        }
+        // getY(){
+        //   this.scroll.on('scroll',position => {
+        //     return position.y
+        //   })
+        // }
       }
     }
 </script>

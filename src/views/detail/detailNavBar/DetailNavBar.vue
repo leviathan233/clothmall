@@ -33,13 +33,10 @@
       data(){
         return {
           titles:['商品','参数','评论','推荐'],
-
         }
       },
       methods:{
         navClick(index){
-          this.currentIndex = index
-          console.log(index);
           this.$emit('navClick',index)
         },
         backClick(){
