@@ -10,7 +10,22 @@ const store = new Vuex.Store({
   },
   mutations:{
     addToCart(state,res){
-      state.cartList.push(res)
+      for(let key in state.cartList){
+        if(state.cartList[key].data.iid == res.iid &&
+          state.cartList[key].data.sku.sizeId == res.sku.sizeId &&
+          state.cartList[key].data.sku.styleId == res.sku.styleId){
+          return  state.cartList[key].count++
+        }
+      }
+      return state.cartList.push({data:res,count:1})
+    },
+    addCount(state,i){
+      console.log(i);
+      
+      state.cartList[i].count++
+    },
+    subCount(state,i){
+      state.cartList[i].count--
     }
   },
   actions:{
@@ -23,3 +38,4 @@ const store = new Vuex.Store({
   }
 })
 export default store
+
