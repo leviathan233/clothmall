@@ -10,7 +10,7 @@
     </div>
     <div class="count">
       <button @click="sub">-</button>
-      <input type="number" class="countInput" v-model="$store.state.cartList[i].count">
+      <input type="number" class="countInput" :value="$store.state.cartList[this.i].count" @blu="inputCount">
       <button @click="add">+</button>
     </div>
   </div>
@@ -27,7 +27,27 @@
     props:{
       i: Number
     },
+    // data(){
+    //   return {
+    //     count:this.$store.state.cartList[this.i].count
+    //   }
+    // },
+    computed:{
+      count(){
+        return this.$store.state.cartList[this.i].count
+      }
+    },
+     watch:{
+      count(){
+        if(this.$store.state.cartList[this.i].count <= 0){
+          this.$store.commit("removeItem",this.i)
+        }
+      }
+    },
     methods:{
+      inputCount(e){
+        this.$store.commit("changeCount",{i:this.i,val:e.target.value})
+      },
       shopImgLoad(){
         this.$bus.$emit('shopImgLoad')
       },

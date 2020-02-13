@@ -19,13 +19,17 @@ const store = new Vuex.Store({
       }
       return state.cartList.push({data:res,count:1})
     },
+    changeCount(state,payload){
+      state.cartList[payload.i].count = Number(payload.val)
+    },
     addCount(state,i){
-      console.log(i);
-      
       state.cartList[i].count++
     },
     subCount(state,i){
       state.cartList[i].count--
+    },
+    removeItem(state,i){
+      Vue.delete(state.cartList,i)
     }
   },
   actions:{
@@ -34,6 +38,11 @@ const store = new Vuex.Store({
         Vue.set(res,'sku',payload)
         state.commit('addToCart',res)
       })
+    }
+  },
+  getters:{
+    getCartList(state){
+      return state.cartList
     }
   }
 })
