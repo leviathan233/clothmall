@@ -30,6 +30,9 @@ const store = new Vuex.Store({
     },
     removeItem(state,i){
       Vue.delete(state.cartList,i)
+    },
+    clearCart(state){
+      state.cartList = []
     }
   },
   actions:{
@@ -41,8 +44,12 @@ const store = new Vuex.Store({
     }
   },
   getters:{
-    getCartList(state){
-      return state.cartList
+    getCartListPrice(state){
+      let sum = 0
+      state.cartList.forEach((item)=>{
+        sum += item.count*item.data.sku.nowprice
+      })
+      return sum
     }
   }
 })

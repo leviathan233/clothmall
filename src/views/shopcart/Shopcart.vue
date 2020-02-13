@@ -4,6 +4,7 @@
     <Scroll ref="shopcartScroll" class="content">
       <ShopItems></ShopItems>
     </Scroll>
+    <ShopcartBar></ShopcartBar>
   </div>
 </template>
 
@@ -11,12 +12,14 @@
   import NavBar from "components/common/navbar/NavBar";
   import Scroll from "components/common/scroll/Scroll";
   import ShopItems from "./shopItems/ShopItems";
+  import ShopcartBar from "./shopcartBar/ShopcartBar"
   export default {
     name: "Shopcart",
     components:{
       NavBar,
       ShopItems,
-      Scroll
+      Scroll,
+      ShopcartBar
     },
   }
 </script>
